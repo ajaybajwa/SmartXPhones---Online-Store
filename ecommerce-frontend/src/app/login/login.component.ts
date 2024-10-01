@@ -11,13 +11,11 @@ export class LoginComponent implements OnInit {
   oktaSignin: any;
   constructor(private oktaAuthService:OktaAuthService) {
     this.oktaSignin = new OktaSignIn({
-      logo: '',
+      logo: 'https://res.cloudinary.com/ajaybajwa/image/upload/v1724723419/Ecommerce/wpx8efjh1q1ysoohw5ex.png',
       baseUrl: myAppConfig.oidc.issuer.split('/oauth2')[0],
       clientId: myAppConfig.oidc.clientId,
       redirectUri: myAppConfig.oidc.redirectUri,
-      features: {
-        registration: true
-      },
+      useInteractionCodeFlow: true,
       authParams: {
         pkce: true,
         issuer: myAppConfig.oidc.issuer,
