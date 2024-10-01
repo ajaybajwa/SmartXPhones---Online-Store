@@ -15,7 +15,7 @@ import com.smartxphones.service.StripeService;
 import com.stripe.exception.StripeException;
 import com.stripe.model.Charge;
 
-@CrossOrigin(origins = {"http://localhost:4201" })
+@CrossOrigin(origins = {"http://localhost:4201","smartxstore.azurewebsites.net" })
 @RestController
 @RequestMapping("/stripe")
 public class ChargeController {

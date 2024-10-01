@@ -17,7 +17,7 @@ import com.smartxphones.model.VendorRequest;
 import com.smartxphones.service.ProductService;
 import com.smartxphones.service.VenderRequestService;
 
-@CrossOrigin(origins = { "http://localhost:4201" })
+@CrossOrigin(origins = { "http://localhost:4201","smartxstore.azurewebsites.net" })
 @RestController
 public class RestockController {
 	

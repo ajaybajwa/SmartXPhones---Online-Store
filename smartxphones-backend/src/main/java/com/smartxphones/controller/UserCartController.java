@@ -17,7 +17,7 @@ import com.smartxphones.model.UserCart;
 import com.smartxphones.model.UserCartId;
 import com.smartxphones.service.UserCartService;
 
-@CrossOrigin(origins = {"http://localhost:4201" })
+@CrossOrigin(origins = {"http://localhost:4201","smartxstore.azurewebsites.net" })
 @RestController
 @RequestMapping("/cart")
 public class UserCartController {

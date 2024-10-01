@@ -16,7 +16,7 @@ import org.springframework.web.bind.annotation.RestController;
 import com.smartxphones.model.ProductCategory;
 import com.smartxphones.service.ProductCategoryService;
 
-@CrossOrigin(origins = {"http://localhost:4201" })
+@CrossOrigin(origins = {"http://localhost:4201","smartxstore.azurewebsites.net" })
 @RestController
 @RequestMapping("/category")
 public class ProductCategoryController {

@@ -16,7 +16,7 @@ import org.springframework.web.bind.annotation.RestController;
 import com.smartxphones.model.VendorRequest;
 import com.smartxphones.service.VenderRequestService;
 
-@CrossOrigin(origins = { "http://localhost:4201" })
+@CrossOrigin(origins = { "http://localhost:4201","smartxstore.azurewebsites.net" })
 @RestController
 @RequestMapping("/vendor/request")
 public class VenderRequestcontroller {

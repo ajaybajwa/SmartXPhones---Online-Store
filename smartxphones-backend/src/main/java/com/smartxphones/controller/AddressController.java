@@ -17,7 +17,7 @@ import com.smartxphones.model.Address;
 import com.smartxphones.service.AddressService;
 
 
-@CrossOrigin(origins = {"http://localhost:4201" })
+@CrossOrigin(origins = {"http://localhost:4201","smartxstore.azurewebsites.net" })
 @RestController
 @RequestMapping("/address")
 public class AddressController {
