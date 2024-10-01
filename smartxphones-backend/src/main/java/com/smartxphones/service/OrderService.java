@@ -65,7 +65,7 @@ public class OrderService {
 			total = total.add(p.getPrice());
 		}
 		order.setAmount(total);
-		sms.sendMessage(order);
+		//sms.sendMessage(order);
 		return ordersRepo.save(order);
 		
 	}

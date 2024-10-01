@@ -66,7 +66,7 @@ class AddressTest {
 		mockMvc.perform(get("/address"))
 				.andExpect(status().isOk())
 				.andExpect(jsonPath("$", Matchers.hasSize(1)))
-				.andExpect(jsonPath("$[0].city", Matchers.is("Cary")));
+				.andExpect(jsonPath("$[0].city", Matchers.is("Calgary")));
 	}
 	
 	@Test
