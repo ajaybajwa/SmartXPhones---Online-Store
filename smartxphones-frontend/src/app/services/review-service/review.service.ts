@@ -11,26 +11,26 @@ export class ReviewService {
   constructor(private http: HttpClient) { }
 
   getAllReviews(): Observable<Review[]> {
-    return this.http.get<Review[]>(`https://smartx-back.azurewebsites.net/review`);
+    return this.http.get<Review[]>(`https://smartxphones-backend.azurewebsites.net/review`);
   }
 
   getReviewByName(name: string): Observable<Review[]> {
-    return this.http.get<Review[]>(`https://smartx-back.azurewebsites.net/review/name/${name}`);
+    return this.http.get<Review[]>(`https://smartxphones-backend.azurewebsites.net/review/name/${name}`);
   }
 
   getReviewById(id: number): Observable<Review> {
-    return this.http.get<Review>(`https://smartx-back.azurewebsites.net/review/${id}`);
+    return this.http.get<Review>(`https://smartxphones-backend.azurewebsites.net/review/${id}`);
   }
 
   addReview(review: Review): Observable<any> {
-    return this.http.post<Review>(`https://smartx-back.azurewebsites.net/review/add`, review);
+    return this.http.post<Review>(`https://smartxphones-backend.azurewebsites.net/review/add`, review);
   }
 
   updateReview(review: Review): Observable<any> {
-    return this.http.put<Review>(`https://smartx-back.azurewebsites.net/review/update`, review);
+    return this.http.put<Review>(`https://smartxphones-backend.azurewebsites.net/review/update`, review);
   }
 
   deleteReview(id: number): Observable<any> {
-    return this.http.delete<Review>(`https://smartx-back.azurewebsites.net/review/delete/${id}`);
+    return this.http.delete<Review>(`https://smartxphones-backend.azurewebsites.net/review/delete/${id}`);
   }
 }

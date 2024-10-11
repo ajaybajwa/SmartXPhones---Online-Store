@@ -11,24 +11,24 @@ export class VenderRequestService {
   constructor(private http: HttpClient) { }
 
   getAllRequests(): Observable<any> {
-    return this.http.get<any>("https://smartx-back.azurewebsites.net/vendor/request/");
+    return this.http.get<any>("https://smartxphones-backend.azurewebsites.net/vendor/request/");
   }
 
   getRequestById(id: string): Observable<any> {
-    return this.http.get<any>(`https://smartx-back.azurewebsites.net/vendor/request/${id}`);
+    return this.http.get<any>(`https://smartxphones-backend.azurewebsites.net/vendor/request/${id}`);
   }
 
 
   deleteRequestById(id: any): Observable<any> {
-    return this.http.delete(`https://smartx-back.azurewebsites.net/vendor/request/delete/${id}`);
+    return this.http.delete(`https://smartxphones-backend.azurewebsites.net/vendor/request/delete/${id}`);
   }
 
   updateStatus(data:any):Observable<any>{
-    return this.http.put(`https://smartx-back.azurewebsites.net/vendor/request/update`,data);
+    return this.http.put(`https://smartxphones-backend.azurewebsites.net/vendor/request/update`,data);
   }
 
   addRequest(data:any):Observable<any>{
-    return this.http.post(`https://smartx-back.azurewebsites.net/vendor/request/add`,data);
+    return this.http.post(`https://smartxphones-backend.azurewebsites.net/vendor/request/add`,data);
   }
 
 }

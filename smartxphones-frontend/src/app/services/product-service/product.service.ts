@@ -10,27 +10,27 @@ export class ProductService {
   constructor(private http: HttpClient) {}
 
   getAllProducts(): Observable<Product[]> {
-    return this.http.get<Product[]>("https://smartx-back.azurewebsites.net/catalog/customer");
+    return this.http.get<Product[]>("https://smartxphones-backend.azurewebsites.net/catalog/customer");
   }
 
 
   getProductByName(name: string): Observable<Product[]> {
-    return this.http.get<Product[]>(`https://smartx-back.azurewebsites.net/catalog/customer/product/${name}`);
+    return this.http.get<Product[]>(`https://smartxphones-backend.azurewebsites.net/catalog/customer/product/${name}`);
   }
 
   getProductById(id: any): Observable<any> {
-    return this.http.get<any>(`https://smartx-back.azurewebsites.net/catalog/customer/${id}`);
+    return this.http.get<any>(`https://smartxphones-backend.azurewebsites.net/catalog/customer/${id}`);
   }
 
   deleteProduct(id: any): Observable<any> {
-    return this.http.delete(`https://smartx-back.azurewebsites.net/catalog/admin/delete/${id}`);
+    return this.http.delete(`https://smartxphones-backend.azurewebsites.net/catalog/admin/delete/${id}`);
   }
 
   updateProduct(data:any):Observable<any>{
-    return this.http.put(`https://smartx-back.azurewebsites.net/catalog/admin/update`,data);
+    return this.http.put(`https://smartxphones-backend.azurewebsites.net/catalog/admin/update`,data);
   }
 
   addProduct(data:any):Observable<any>{
-    return this.http.post(`https://smartx-back.azurewebsites.net/catalog/admin/add`,data);
+    return this.http.post(`https://smartxphones-backend.azurewebsites.net/catalog/admin/add`,data);
   }
 }

@@ -9,6 +9,6 @@ export class OktaService {
   constructor(private http: HttpClient) { }
 
   getAllOrders(): Observable<any> {
-    return this.http.get<any>(`https://smartx-back.azurewebsites.net/api/userProfile`);
+    return this.http.get<any>(`https://smartxphones-backend.azurewebsites.net/api/userProfile`);
   }
 }
