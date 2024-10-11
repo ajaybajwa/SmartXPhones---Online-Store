@@ -1,0 +1,246 @@
+
+
+<div class="d-flex sale-picture bg-dark p-3 rounded-med">
+    <div class="description w-25 rounded-med">
+        <h1 class="text-white m-1">Stay ahead<br>in the tech game!</h1>
+        <h5 class="text-info p-1">Best iPhones and Macbooks <span class="text-white">available at unbeatable prices.</span> </h5>
+    </div>
+    <div class="container-fluid w-100 p-0 h-25 justify-content-end">
+        <img class="img-fluid" [src]="imageUrl" alt="Product image">
+    </div>
+</div>
+
+<div class="main bg-white">
+    <div class="container m-2">
+        <a href=#>
+            <h2 style="font-weight: normal" class="text-info">Browse By Popular Products</h2>
+        </a>
+    </div>
+
+    <div class="container-fluid p-2 d-flex flex-wrap justify-content-center">
+
+        <div class="card m-2 d-flex" style="width: 18em;" *ngFor="let product of products;">
+            <h5 *ngIf="product.quantity <= 10 && product.quantity > 0" class="bg-info text-dark">Only
+                <span class="text-white">{{ product.quantity }}</span> left!
+            </h5>
+            <img class="card-img-top review" (click)="viewProductReviews(reviews)"
+                style="border-radius: 15px; width: auto; height: auto;" [src]="product.image" alt="Card image cap">
+
+            <div class="card-body">
+                <h5 class="card-title">{{ product.name }}</h5>
+                <!-- View Reveiw Modal -->
+                <ng-template #reviews let-modal
+                    class="container-fluid container-sm d-flex flex-wrap justify-content-center">
+                    <div class="modal-header bg-light">
+                        <h4 class="modal-title">Product Reviews</h4>
+                        <button type="button" class="btn-close" aria-label="Close"
+                            (click)="modal.dismiss('Cross click')"></button>
+                    </div>
+                    <div class="modal-body d-flex p-2 m-2">
+                        <div class="card m-2 sticky-top h-100" style="width: 25em;">
+                            <h5 *ngIf="product.quantity <= 10 && product.quantity > 0" class="bg-info text-dark">Only
+                                <span class="text-white">{{ product.quantity }}</span> left!
+                            </h5>
+                            <img class="card-img-top h-100 container-fluid" style="border-radius: 15px;"
+                                [src]="product.image" alt="Card image cap">
+                            <div class="card-body">
+                                <h5 class="card-title">{{ product.name }}</h5>
+                                <ul>
+                                    <li class="w-100" *ngIf="product.rating == 1">
+                                        <em *ngFor="let _ of [].constructor(1)" class="fa-solid fa-star"></em>
+                                        <em *ngFor="let _ of [].constructor(4)" class="fa-regular fa-star"></em>
+                                    </li>
+                                    <li class="w-100" *ngIf="product.rating == 2">
+                                        <em *ngFor="let _ of [].constructor(2)" class="fa-solid fa-star"></em>
+                                        <em *ngFor="let _ of [].constructor(3)" class="fa-regular fa-star"></em>
+                                    </li>
+                                    <li class="w-100" *ngIf="product.rating == 3">
+                                        <em *ngFor="let _ of [].constructor(3)" class="fa-solid fa-star"></em>
+                                        <em *ngFor="let _ of [].constructor(2)" class="fa-regular fa-star"></em>
+                                    </li>
+                                    <li class="w-100" *ngIf="product.rating == 4">
+                                        <em *ngFor="let _ of [].constructor(4)" class="fa-solid fa-star"></em>
+                                        <em *ngFor="let _ of [].constructor(1)" class="fa-regular fa-star"></em>
+                                    </li>
+                                    <li class="w-100" *ngIf="product.rating == 5">
+                                        <em *ngFor="let _ of [].constructor(5)" class="fa-solid fa-star"></em>
+                                    </li>
+                                </ul>
+
+                                <br>
+
+                                <div style="overflow-y: scroll; height:14em;"> 
+                                <p class="card-text" style="text-overflow: ellipses;">{{ product.description }}</p>
+                                </div>
+
+                            </div>
+                            <div class="d-flex flex-column justify-content-center align-items-center"
+                                style="margin-bottom: 5em; margin-top: 0; padding-top: 0;">
+                                <button class="btn btn-info m-2" style="float: right;"
+                                    [hidden]="!(product.quantity <= 0)" disabled>Out of
+                                    Stock</button>
+                                <button (click)="addToCart(product)" class="btn btn-info m-2" style="float: right;"
+                                    [hidden]="!(product.quantity > 0)">Add
+                                    To
+                                    Cart</button>
+                                <h5 class="card-subtitle pt-2">${{ product.price }}</h5><br>
+                            </div>
+                        </div>
+                        <div class="d-flex flex-nowrap flex-column container-fluid h-100">
+                            <a href="/home#newReview" class="btn sticky-top h-100 container-fluid bg-info text-white"
+                                (click)="showAddReview = true" [hidden]="showAddReview">Add A
+                                Review</a>
+                            <div class="card m-2" *ngFor="let review of allReviews">
+                                <div *ngIf="product.productId == review.product.productId">
+                                    <div class="card-body">
+                                        <div class="d-flex flex-nowrap justify-content-start align-items-center">
+                                            <img src="https://res.cloudinary.com/ajaybajwa/image/upload/v1726708140/ulktijiqv78bdj5coulj.png"
+                                                alt="User Profile Image" class="rounded-circle m-2 border border-info"
+                                                style="width: 4em;">
+                                            <h5>{{ review.name }}</h5>
+                                        </div>
+                                        <ul>
+                                            <li class="w-100" *ngIf="review.rating == 1">
+                                                <em *ngFor="let _ of [].constructor(1)" class="fa-solid fa-star"></em>
+                                                <em *ngFor="let _ of [].constructor(4)" class="fa-regular fa-star"></em>
+                                            </li>
+                                            <li class="w-100" *ngIf="review.rating == 2">
+                                                <em *ngFor="let _ of [].constructor(2)" class="fa-solid fa-star"></em>
+                                                <em *ngFor="let _ of [].constructor(3)" class="fa-regular fa-star"></em>
+                                            </li>
+                                            <li class="w-100" *ngIf="review.rating == 3">
+                                                <em *ngFor="let _ of [].constructor(3)" class="fa-solid fa-star"></em>
+                                                <em *ngFor="let _ of [].constructor(2)" class="fa-regular fa-star"></em>
+                                            </li>
+                                            <li class="w-100" *ngIf="review.rating == 4">
+                                                <em *ngFor="let _ of [].constructor(4)" class="fa-solid fa-star"></em>
+                                                <em *ngFor="let _ of [].constructor(1)" class="fa-regular fa-star"></em>
+                                            </li>
+                                            <li class="w-100" *ngIf="review.rating == 5">
+                                                <em *ngFor="let _ of [].constructor(5)" class="fa-solid fa-star"></em>
+                                            </li>
+                                        </ul>
+
+                                        <p class="card-text"
+                                            style="font-style: italic; font-weight: bolder; border-top: 2px solid black">
+                                            {{
+                                            review.title }}</p>
+                                        <p class="card-text" style="text-overflow: ellipses;">{{ review.review }}</p>
+                                    </div>
+                                </div>
+                            </div>
+                            <a *ngIf="showAddReview" id="newReview">
+                                <div class="card m-2">
+                                    <div class="card-body">
+                                        <div class="d-flex flex-nowrap justify-content-start align-items-center">
+                                            <img src="https://res.cloudinary.com/ajaybajwa/image/upload/v1726708140/ulktijiqv78bdj5coulj.png"
+                                                alt="User Profile Image" class="rounded-circle m-2 border border-info"
+                                                style="width: 4em;">
+                                            <input type="text" [(ngModel)]="review.name" placeholder="Reviewer name"
+                                                class="form-control" required minlength="1" #name="ngModel">
+                                            <br>
+                                            <div [hidden]="name.valid || name.pristine" class="text-bold p-1"
+                                                style="font-style: italic; color: red;">
+                                                Reviewer name is required.
+                                            </div>
+                                        </div>
+                                        <input type="number" [(ngModel)]="review.rating" min="1" max="5"
+                                            style="width: 5em; height: 2em;" required #rating="ngModel">
+                                        &nbsp;/ 5 <em class="fa-solid fa-star"></em>&nbsp;
+                                        <em *ngIf="review.rating > 5 || review.rating < 1" style="color: red;">* rating
+                                            must be between
+                                            1 & 5</em>
+                                        <p class="card-text"
+                                            style="font-style: italic; font-weight: bolder; border-top: 2px solid black">
+                                            <input type="text-box" class="form-control" [(ngModel)]="review.title"
+                                                placeholder="Overview" required minlength="1" #title="ngModel">
+                                        </p>
+                                        <div [hidden]="title.valid || title.pristine" class="text-bold p-1"
+                                            style="font-style: italic; color: red;">
+                                            Review title is required.
+                                        </div>
+                                        <p class="card-text" style="text-overflow: ellipses;"><textarea type="text"
+                                                class="form-control" [(ngModel)]="review.review" #comment="ngModel"
+                                                placeholder="Description" style="height: 10em;" required
+                                                minlength="1"></textarea></p>
+                                        <div [hidden]="comment.valid || comment.pristine" class="text-bold p-1"
+                                            style="font-style: italic; color: red;">
+                                            Review description is required.
+                                        </div>
+                                    </div>
+                                    <div class="d-flex flex-nowrap justify-content-end m-2">
+                                        <button (click)="saveReview(product)" class="btn btn-info m-1"
+                                            [disabled]="rating.errors?.['required'] || rating.errors?.['min'] || rating.errors?.['max']
+                                        || name.errors?.['required'] ||  name.errors?.['minlength'] || title.errors?.['required']
+                                        || title.errors?.['minlength']  || comment.errors?.['required'] || comment.errors?.['minlength']">Submit</button>
+                                        <button class="btn btn-light m-1"
+                                            (click)="showAddReview = false">Cancel</button>
+                                    </div>
+
+                                </div>
+                            </a>
+                        </div>
+                    </div>
+                </ng-template>
+
+                <div class="d-flex flex-nowrap">
+                    <div>
+                        <ul>
+                            <li class="w-100" *ngIf="product.rating == 1">
+                                <em *ngFor="let _ of [].constructor(1)" class="fa-solid fa-star"></em>
+                                <em *ngFor="let _ of [].constructor(4)" class="fa-regular fa-star"></em>
+                            </li>
+                            <li class="w-100" *ngIf="product.rating == 2">
+                                <em *ngFor="let _ of [].constructor(2)" class="fa-solid fa-star"></em>
+                                <em *ngFor="let _ of [].constructor(3)" class="fa-regular fa-star"></em>
+                            </li>
+                            <li class="w-100" *ngIf="product.rating == 3">
+                                <em *ngFor="let _ of [].constructor(3)" class="fa-solid fa-star"></em>
+                                <em *ngFor="let _ of [].constructor(2)" class="fa-regular fa-star"></em>
+                            </li>
+                            <li class="w-100" *ngIf="product.rating == 4">
+                                <em *ngFor="let _ of [].constructor(4)" class="fa-solid fa-star"></em>
+                                <em *ngFor="let _ of [].constructor(1)" class="fa-regular fa-star"></em>
+                            </li>
+                            <li class="w-100" *ngIf="product.rating == 5">
+                                <em *ngFor="let _ of [].constructor(5)" class="fa-solid fa-star"></em>
+                            </li>
+                        </ul>
+
+                    </div>
+                    <a class="text-info special-a" (click)="viewProductReviews(reviews)" style="padding-left: 0.5em">{{
+                        getReviewCount(product.productId)
+                        }}</a>
+                </div>
+                <br>
+                <div id="desc" class="line-clamp-4">
+                <p class="card-text" style="text-overflow: ellipses;">{{ product.description }}</p>
+                </div>
+                <button class="btn-success btn-rounded" (click)="viewProductReviews(reviews)">Show more..</button>
+                <!--
+               <script>
+function myFunction() {
+  var element = document.getElementById("lin");
+  element.classList.remove("mystyle");
+}
+
+               </script> <button ng-click="document.querySelector('p').classList.remove('line-clamp-4')">Read more...</button>
+
+<button ng-click="document.querySelector('p').classList.add('line-clamp-4')">Read less...</button>
+
+-->
+            </div>
+            <div class="d-flex flex-column justify-content-center align-items-center"
+                style="margin-bottom: 5em; margin-top: 0; padding-top: 0;">
+                <button class="btn btn-info m-2" style="float: right;" [hidden]="!(product.quantity <= 0)" disabled>Out
+                    of
+                    Stock</button>
+                <button (click)="addToCart(product)" class="btn btn-info m-2" style="float: right;"
+                    [hidden]="!(product.quantity > 0)">Add
+                    To
+                    Cart</button>
+                <h5 class="card-subtitle pt-2">${{ product.price }}</h5><br>
+            </div>
+
+        </div>
+    </div>
